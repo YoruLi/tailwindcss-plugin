@@ -1,0 +1,37 @@
+---
+import Layout from "../layouts/Layout.astro";
+import theme from "../../../src/theme";
+---
+
+<Layout title="Welcome to Astro.">
+  <div
+    id="mask-image"
+    class="absolute inset-0 bg-grid-slate-900/[0.04] bg-[bottom_1px_center] dark:bg-grid-slate-400/[0.05] dark:bg-bottom dark:border-b dark:border-slate-100/5"
+    style="mask-image:linear-gradient(to bottom, transparent, black);-webkit-mask-image:linear-gradient(to bottom, transparent, black)"
+  >
+  </div>
+  <main class="">
+    <header class="max-w-4xl mx-auto flex flex-col justify-center items-center py-10">
+      <h1 class="text-5xl font-bold pb-2">Tailwind CSS Animations</h1>
+      <h2 class="font-semibold">Plugin's Tailwind CSS with a lot of animations</h2>
+      <div class="bg-[#0a0a0a] px-4 py-1 rounded-md mt-10">
+        <code>pnpm install @yoruli/tailwindcss-animations</code>
+      </div>
+    </header>
+
+    <section class="max-w-4xl m-auto grid columns-auto gap-4">
+      {
+        Object.keys(theme.animation).map((animation) => (
+          <article class="col-span-1">
+            <div>{animation}</div>
+          </article>
+        ))
+      }
+    </section>
+  </main>
+</Layout>
+<style>
+  #mask-image {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(148 163 184 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+  }
+</style>
