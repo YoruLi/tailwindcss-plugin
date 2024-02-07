@@ -1,5 +1,9 @@
 import createPlugin from "tailwindcss/plugin";
+<<<<<<< HEAD
 import type { Config, PluginAPI, PluginCreator } from "tailwindcss/types/config";
+=======
+import { Config, PluginAPI, PluginCreator } from "tailwindcss/types/config";
+>>>>>>> b8b79af6d109dbc721858673b0a296788dad0b2a
 import theme from "./theme";
 
 const pluginCreator: PluginCreator = (api: PluginAPI) => {
@@ -11,7 +15,11 @@ const pluginCreator: PluginCreator = (api: PluginAPI) => {
   };
 
   Object.entries(utils).forEach(([name, { css, values }]) => {
+<<<<<<< HEAD
     matchUtilities({ [name]: (value) => ({ [css]: value }) }, { values });
+=======
+    matchUtilities({ [name]: (value) => ({ css: value }) }, { values });
+>>>>>>> b8b79af6d109dbc721858673b0a296788dad0b2a
   });
 
   addUtilities({

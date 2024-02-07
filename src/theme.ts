@@ -1,5 +1,6 @@
 export default {
   animation: {
+<<<<<<< HEAD
     "fade-in": "fade-in .6s ease-in both",
     "fade-out": "fade-out .6s ease-out both",
     "blurred-fade-in": "blurred-fade-in .6s ease-in-out both",
@@ -43,6 +44,10 @@ export default {
     "fade-roll-out": "fade-roll-out .6s linear both",
     like: "like .5s ease both",
     "like-alternative": "like-alternative .5s ease both",
+=======
+    "fade-in": "fade-in 0.6s ease-in both",
+    "fade-out": "fade-out 0.6s ease-out both",
+>>>>>>> b8b79af6d109dbc721858673b0a296788dad0b2a
   },
   keyframes: {
     "fade-in": {
@@ -53,6 +58,7 @@ export default {
       "0%": { opacity: "1" },
       "100%": { opacity: "0" },
     },
+<<<<<<< HEAD
     "blurred-fade-in": {
       "0%": {
         filter: "blur(5px)",
@@ -389,5 +395,7 @@ export default {
     500: "500ms",
     700: "700ms",
     1000: "1000ms",
+=======
+>>>>>>> b8b79af6d109dbc721858673b0a296788dad0b2a
   },
 };
