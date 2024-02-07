@@ -1,0 +1,82 @@
+---
+import Layout from "../layouts/Layout.astro";
+import theme from "../../../src/theme";
+import Clipboard from "../components/Clipboard.astro";
+---
+
+<!-- style="mask-image:linear-gradient(to bottom, transparent, black);-webkit-mask-image:linear-gradient(to bottom, transparent, black)" -->
+<Layout title="Welcome to Astro.">
+  <div id="mask-image" class="absolute inset-0 -z-10"></div>
+  <main>
+    <header class="max-w-4xl mx-auto flex flex-col justify-center items-center py-10">
+      <h1 class="text-6xl font-bold text-center pb-2 animate-fade-in animate-delay-200">Tailwind CSS Animations</h1>
+      <h2 class="font-semibold animate-fade-in animate-delay-400">Plugin's Tailwind CSS with a lot of animations</h2>
+      <div
+        class="bg-[#0a0a0a] px-4 py-1 *:inline-block space-x-2 flex items-center rounded-md mt-10 animate-fade-in animate-delay-500"
+      >
+        <code>pnpm install @yoruli/tailwindcss-animations</code>
+        <Clipboard />
+      </div>
+    </header>
+
+    <section class="max-w-4xl m-auto grid-animations gap-4 py-10 animate-fade-in animate-delay-500">
+      {
+        Object.keys(theme.animation).map((animation) => (
+          <article data-class={animation} class="col-span-1 rounded-md select-none">
+            <div id="box" class="size-32 flex w-full justify-center items-center bg-[#0b0d10] border border-white/10 rounded-md ">
+              <h3 class="text-xs">{animation}</h3>
+            </div>
+          </article>
+        ))
+      }
+    </section>
+  </main>
+</Layout>
+<style>
+  h1 {
+    background-color: transparent;
+    background-image: var(--accent-gradient);
+    background-clip: text;
+    color: transparent;
+  }
+  .grid-animations {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+  #mask-image {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(148 163 184 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+  }
+</style>
+
+<script>
+  const $articles = document.querySelectorAll("article");
+  $articles.forEach(($article) => {
+    const animationKeys = $article.getAttribute("data-class");
+    const animationClass = `animate-${animationKeys}`;
+    const $box = $article.querySelector("#box");
+    if ($box === null) return;
+
+    $article.addEventListener("mouseenter", () => {
+      $box?.classList.add(animationClass);
+    });
+
+    $article.addEventListener("mouseleave", () => {
+      $box?.classList.remove(animationClass);
+    });
+  });
+
+  const $clipboardButton = document.querySelector("#clipboard");
+
+  $clipboardButton?.addEventListener("click", (evt) => {
+    const $clipboardIcon = document.querySelector("#clipboardSvg");
+    const $check = document.querySelector("#check");
+
+    navigator.clipboard.writeText("pnpm install @yoruli/tailwindcss-animations");
+    $clipboardIcon?.classList.add("hidden");
+    $check?.classList.remove("hidden");
+    setTimeout(() => {
+      $clipboardIcon?.classList.remove("hidden");
+      $check?.classList.add("hidden");
+    }, 1000);
+  });
+</script>
