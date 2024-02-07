@@ -50,10 +50,12 @@ import Clipboard from "../components/Clipboard.astro";
 
 <script>
   const $articles = document.querySelectorAll("article");
+
   $articles.forEach(($article) => {
     const animationKeys = $article.getAttribute("data-class");
     const animationClass = `animate-${animationKeys}`;
     const $box = $article.querySelector("#box");
+
     if ($box === null) return;
 
     $article.addEventListener("mouseenter", () => {
@@ -72,8 +74,10 @@ import Clipboard from "../components/Clipboard.astro";
     const $check = document.querySelector("#check");
 
     navigator.clipboard.writeText("pnpm install @yoruli/tailwindcss-animations");
+
     $clipboardIcon?.classList.add("hidden");
     $check?.classList.remove("hidden");
+
     setTimeout(() => {
       $clipboardIcon?.classList.remove("hidden");
       $check?.classList.add("hidden");
