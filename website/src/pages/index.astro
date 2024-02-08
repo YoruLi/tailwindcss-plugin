@@ -9,7 +9,7 @@ import Clipboard from "../components/Clipboard.astro";
   <div id="mask-image" class="absolute inset-0 -z-10"></div>
   <main>
     <header class="max-w-4xl mx-auto flex flex-col justify-center items-center py-10">
-      <h1 class="text-6xl font-bold text-center pb-2 animate-fade-in animate-delay-200">Tailwind CSS Animations</h1>
+      <h1 class="font-bold text-center pb-2 animate-fade-in animate-delay-200">Tailwind CSS Animations</h1>
       <h2 class="font-semibold animate-fade-in animate-delay-400">Plugin's Tailwind CSS with a lot of animations</h2>
       <div
         class="bg-[#0a0a0a] px-4 py-1 *:inline-block space-x-2 flex items-center rounded-md mt-10 animate-fade-in animate-delay-500"
@@ -18,6 +18,40 @@ import Clipboard from "../components/Clipboard.astro";
         <Clipboard />
       </div>
     </header>
+    <section
+      class="max-w-4xl flex flex-col gap-4 animate-fade-in animate-delay-500 mx-auto bg-[#0b0d10] p-3 rounded-md [&>article]:flex [&>article]:gap-3 [&>article]:items-center [&>article]:justify-start"
+    >
+      <article class="flex-wrap">
+        <h2>Animations fill mode:</h2>
+        {
+          Object.keys(theme.animationFillMode).map((animation) => (
+            <button data-class={`fill-mode-${animation}`} class=" text-xs block px-1  self-center rounded-sm ">
+              {animation}
+            </button>
+          ))
+        }
+      </article>
+      <article class="flex-wrap">
+        <h2>Animations duration:</h2>
+        {
+          Object.keys(theme.animationDuration).map((animation) => (
+            <button data-class={`duration-${animation}`} class=" text-xs block px-1  self-center rounded-sm  ">
+              {animation}
+            </button>
+          ))
+        }
+      </article>
+      <article class="flex-wrap">
+        <h2>Animations delay:</h2>
+        {
+          Object.keys(theme.animationDelay).map((animation) => (
+            <button data-class={`delay-${animation}`} class=" text-xs block px-1 self-center rounded-sm ">
+              {animation}
+            </button>
+          ))
+        }
+      </article>
+    </section>
 
     <section class="max-w-4xl m-auto grid-animations gap-4 py-10 animate-fade-in animate-delay-500">
       {
@@ -32,8 +66,10 @@ import Clipboard from "../components/Clipboard.astro";
     </section>
   </main>
 </Layout>
+
 <style>
   h1 {
+    font-size: clamp(1rem, 10vw, 3rem);
     background-color: transparent;
     background-image: var(--accent-gradient);
     background-clip: text;
@@ -49,7 +85,41 @@ import Clipboard from "../components/Clipboard.astro";
 </style>
 
 <script>
+  const $utilities = document.querySelectorAll("article button");
   const $articles = document.querySelectorAll("article");
+  $utilities.forEach(($utilitie) => {
+    var animationKeys = $utilitie.getAttribute("data-class");
+    var animationClass = `animate-${animationKeys}`;
+    const dataClassPrefix = animationClass?.split("-").slice(0, 2).join("-");
+
+    $utilitie.addEventListener("click", () => {
+      const dataAnimate = $utilitie?.getAttribute("data-class");
+      if (!dataAnimate) return;
+
+      const buttonsInRow = document.querySelectorAll(`[data-class^="${dataAnimate.split("-")[0]}"]`);
+
+      buttonsInRow.forEach((button) => {
+        button.classList.remove("bg-[#c03ba8]");
+      });
+      $utilitie.classList.add("bg-[#c03ba8]");
+
+      $articles.forEach(($article) => {
+        const $box = $article.querySelector("#box");
+        if ($box === null) return;
+        const classList = Array.from($box.classList);
+
+        classList.forEach((cls) => {
+          if (cls.startsWith(dataClassPrefix)) {
+            $box.classList.remove(cls);
+          }
+        });
+
+        $box?.classList.add(animationClass);
+      });
+    });
+  });
+
+  // <------------------------------------------------------->
 
   $articles.forEach(($article) => {
     const animationKeys = $article.getAttribute("data-class");
@@ -67,8 +137,8 @@ import Clipboard from "../components/Clipboard.astro";
     });
   });
 
+  // <------------------------------------------------------->
   const $clipboardButton = document.querySelector("#clipboard");
-
   $clipboardButton?.addEventListener("click", (evt) => {
     const $clipboardIcon = document.querySelector("#clipboardSvg");
     const $check = document.querySelector("#check");
