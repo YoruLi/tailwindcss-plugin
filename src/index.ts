@@ -8,6 +8,8 @@ const pluginCreator: PluginCreator = (api: PluginAPI) => {
   const utils = {
     "animate-delay": { css: "animation-delay", values: theme("animationDelay") },
     "animate-duration": { css: "animation-duration", values: theme("animationDuration") },
+    "animate-iteration-count": { css: "animation-iteration-count", values: theme("animationIterationCount") },
+    "animate-fill-mode": { css: "animation-fill-mode", values: theme("animationFillMode") },
   };
 
   Object.entries(utils).forEach(([name, { css, values }]) => {
@@ -30,14 +32,17 @@ const pluginCreator: PluginCreator = (api: PluginAPI) => {
     ".animate-linear": {
       "animation-timing-function": "linear",
     },
-    "animation-forwards": {
-      "animation-fill-mode": "forwards",
+    ".animate-direction-normal": {
+      "animation-direction": "normal",
     },
-    "animation-backwards": {
-      "animation-fill-mode": "backwards",
+    ".animate-direction-reverse": {
+      "animation-direction": "reverse",
     },
-    "animation-both": {
-      "animation-fill-mode": "both",
+    ".animate-direction-alternate": {
+      "animation-direction": "alternate",
+    },
+    ".animate-direction-alternate-reverse": {
+      "animation-direction": "alternate-reverse",
     },
   });
 };
