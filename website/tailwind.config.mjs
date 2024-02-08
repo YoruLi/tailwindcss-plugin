@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import animations from "../src/index";
 import theme from "../src/theme";
 
@@ -13,13 +12,3 @@ export default {
   plugins: [animations],
   safelist,
 };
-=======
-/** @type {import('tailwindcss').Config} */
-export default {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-	theme: {
-		extend: {},
-	},
-	plugins: [],
-}
->>>>>>> b8b79af6d109dbc721858673b0a296788dad0b2a
