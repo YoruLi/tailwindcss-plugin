@@ -1,6 +1,5 @@
 export default {
   animation: {
-<<<<<<< HEAD
     "fade-in": "fade-in .6s ease-in both",
     "fade-out": "fade-out .6s ease-out both",
     "blurred-fade-in": "blurred-fade-in .6s ease-in-out both",
@@ -38,16 +37,16 @@ export default {
     "flip-x-out": "flip-x-out .6s linear both",
     "flip-horizontal": "flip-horizontal .6s linear both",
     "flip-horizontal-reset": "flip-horizontal-reset .6s linear both",
+    "roll-r": "roll-r .6s linear both",
     pop: "pop .4s ease both",
-    roll: "roll .6s linear both",
-    "fade-roll-in": "fade-roll-in .6s linear both",
-    "fade-roll-out": "fade-roll-out .6s linear both",
+    "roll-l": "roll-l .6s linear both",
+    "fade-roll-l-in": "fade-roll-l-in .6s linear both",
+    "fade-roll-l-out": "fade-roll-l-out .6s linear both",
     like: "like .5s ease both",
+    "fade-roll-r-in": "fade-roll-r-in .6s linear both",
+    "fade-roll-r-out": "fade-roll-r-out .6s linear both",
     "like-alternative": "like-alternative .5s ease both",
-=======
-    "fade-in": "fade-in 0.6s ease-in both",
-    "fade-out": "fade-out 0.6s ease-out both",
->>>>>>> b8b79af6d109dbc721858673b0a296788dad0b2a
+    skew: "skew .6s ease both",
   },
   keyframes: {
     "fade-in": {
@@ -58,7 +57,7 @@ export default {
       "0%": { opacity: "1" },
       "100%": { opacity: "0" },
     },
-<<<<<<< HEAD
+
     "blurred-fade-in": {
       "0%": {
         filter: "blur(5px)",
@@ -337,21 +336,38 @@ export default {
       "100%": { transform: "rotateY(180deg)", opacity: "0" },
     },
 
-    roll: {
+    "roll-l": {
       "0%": { transform: "rotate(0)", opacity: "1" },
       "50%": { transform: "rotate(-45deg) translateY(-10px)" },
       "100%": { transform: "rotate(-180deg) translateX(40px)" },
     },
-    "fade-roll-in": {
+    "roll-r": {
+      "0%": { transform: "rotate(0)", opacity: "1" },
+      "50%": { transform: "rotate(45deg) translateY(-30px) " },
+      "100%": { transform: "rotate(180deg) translateX(-40px)" },
+    },
+    "fade-roll-l-in": {
       "100%": { transform: "rotate(0)", opacity: "1" },
-      "50%": { transform: "rotate(-45deg) translateY(-10px)" },
+      "50%": { transform: "rotate(-45deg) translateY(-30px) " },
       "0%": { transform: "rotate(-180deg) translateX(40px)", opacity: "0" },
     },
-    "fade-roll-out": {
+    "fade-roll-l-out": {
       "0%": { transform: "rotate(0)", opacity: "1" },
-      "50%": { transform: "rotate(-45deg) translateY(-10px)" },
+      "50%": { transform: "rotate(-45deg) translateY(-30px)" },
       "100%": { transform: "rotate(-180deg) translateX(40px)", opacity: "0" },
     },
+
+    "fade-roll-r-in": {
+      "100%": { transform: "rotate(0)", opacity: "1" },
+      "50%": { transform: "rotate(45deg) translateY(-30px)" },
+      "0%": { transform: "rotate(180deg) translateX(-40px)", opacity: "0" },
+    },
+    "fade-roll-r-out": {
+      "0%": { transform: "rotate(0)", opacity: "1" },
+      "50%": { transform: "rotate(45deg) translateY(-30px)" },
+      "100%": { transform: "rotate(180deg) translateX(-40px)", opacity: "0" },
+    },
+
     like: {
       "0%": { transform: "scale(1)" },
       "25%": { transform: "scale(1.1)" },
@@ -365,6 +381,10 @@ export default {
       "50%": { transform: "scale(1.1)" },
       "75%": { transform: "scale(0.9)" },
       "100%": { transform: "scale(1)" },
+    },
+    skew: {
+      "0%": { transform: "rotateX(0deg) skewX(0deg)" },
+      "100%": { transform: "rotateX(30deg) skewX(20deg)" },
     },
   },
   animationDelay: {
@@ -381,11 +401,6 @@ export default {
   },
   animationDuration: {
     none: 0,
-    slower: "500ms",
-    slow: "400ms",
-    normal: "300ms",
-    fast: "200ms",
-    faster: "100ms",
     100: "100ms",
     150: "150ms",
     200: "200ms",
@@ -395,7 +410,17 @@ export default {
     500: "500ms",
     700: "700ms",
     1000: "1000ms",
-=======
->>>>>>> b8b79af6d109dbc721858673b0a296788dad0b2a
+  },
+  animationIterationCount: {
+    none: "0",
+    once: "1",
+    twice: "2",
+    infinite: "infinite",
+  },
+  animationFillMode: {
+    none: "none",
+    forwards: "forwards",
+    backwards: "backwards",
+    both: "both",
   },
 };
